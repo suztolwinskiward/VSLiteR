@@ -44,7 +44,8 @@
 ####################################################################################################
 
 
-VSLiteR <- function(syear,eyear,phi,T1,T2,M1,M2,T,P,varargin,
+VSLiteR <- function(syear,eyear,phi,T,P,
+                        T1 = 8, T2 = 23, M1 = .01, M2 = .05,
                         Mmax = 0.76,Mmin = 0.01,alph = 0.093,
                         m.th = 4.886,mu.th = 5.8,rootd = 1000,M0 = .2,
                         substep = 0,I_0 = 1,I_f = 12,hydroclim = "P"){
@@ -101,7 +102,7 @@ VSLiteR <- function(syear,eyear,phi,T1,T2,M1,M2,T,P,varargin,
     }else{ # no inclusion of last year's growth conditions in estimates of this year's growth:
       startmo <- I_0+1;
       endmo <- I_f;
-      width[cyear] <- colSums(Gr[startmo:endmo,])
+      width <- colSums(Gr[startmo:endmo,])
     }
   }
   if(phi<0){ # if site is in the Southern Hemisphere:
@@ -117,7 +118,7 @@ VSLiteR <- function(syear,eyear,phi,T1,T2,M1,M2,T,P,varargin,
   }
   
   # Simulated proxy series standardized width:
-  trw <- t((width-mean(width))/std(width)); 
+  trw <- t((width-mean(width))/sd(width)); 
 
   #############################################################################
   # Return output:
