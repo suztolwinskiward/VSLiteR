@@ -51,7 +51,7 @@ leakybucket.monthly <- function(syear,eyear,phi,T,P,Mmax = 0.76,Mmin = 0.01,alph
   I <- sum(istar);
   
   # precalculation of the exponent alpha in the Thornwaite (1948) equation:
-  a < (6.75e-7)*I^3 - (7.71e-5)*I^2 + (1.79e-2)*I + 0.49;
+  a <- (6.75e-7)*I^3 - (7.71e-5)*I^2 + (1.79e-2)*I + 0.49;
   
   #########################################################################################
   #### -- year cycle -- ####
