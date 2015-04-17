@@ -4,9 +4,10 @@
 \alias{VSLiteR}
 \title{VS-Lite model of tree ring width growth.}
 \usage{
-VSLiteR(syear, eyear, phi, T1, T2, M1, M2, T, P, varargin, Mmax = 0.76,
-  Mmin = 0.01, alph = 0.093, m.th = 4.886, mu.th = 5.8, rootd = 1000,
-  M0 = 0.2, substep = 0, I_0 = 1, I_f = 12, hydroclim = "P")
+VSLiteR(syear, eyear, phi, T, P, T1 = 8, T2 = 23, M1 = 0.01, M2 = 0.05,
+  Mmax = 0.76, Mmin = 0.01, alph = 0.093, m.th = 4.886, mu.th = 5.8,
+  rootd = 1000, M0 = 0.2, substep = 0, I_0 = 1, I_f = 12,
+  hydroclim = "P")
 }
 \arguments{
 \item{syear}{Start year of simulation.}
@@ -15,15 +16,15 @@ VSLiteR(syear, eyear, phi, T1, T2, M1, M2, T, P, varargin, Mmax = 0.76,
 
 \item{phi}{Latitude of site (in degrees N).}
 
+\item{T}{(12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).}
+
+\item{P}{(12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).}
+
 \item{T1}{Lower temperature threshold for growth to begin (scalar, deg. C).}
 
 \item{M1}{Lower moisture threshold for growth to begin (scalar, v.v).}
 
 \item{M2}{Upper moisture threshold for growth sensitivity to moisture (scalar, v/v).}
-
-\item{T}{(12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).}
-
-\item{P}{(12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).}
 
 \item{Mmax}{Scalar maximum soil moisture held by the soil (in v/v).}
 
