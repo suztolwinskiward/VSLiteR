@@ -4,13 +4,13 @@
 #' 
 #' @param site Index 1, 2, 3, or 4, specifies which of 4 test sites to run.
 #
-#' @seealso \code{\link{VSLiteR}}
+#' @seealso \code{\link{VSLite}}
 #' 
 #' @export
 
 test_VSLiteR <- function(site = 1){
   # load the test data:
-  data(sitecoords,Tmp,P,syear,eyear,trw.obs)
+### data(sitecoords,Tmp,P,syear,eyear,trw.obs)
   
   # select climate and location data for the chosen test site:
   T <- Tmp[,,site];
@@ -22,7 +22,7 @@ test_VSLiteR <- function(site = 1){
   # [T1,T2,M1,M2] = estimate_vslite_params_v2_3(T,P,phi,trw_obs(:,site)','nsamp',2000);
   
   # Run VS-Lite.
-  out <- VSLiteR(syear,eyear,phi,T,P); # all other parameters: use defaults.
+  out <- VSLite(syear,eyear,phi,T,P); # all other parameters: use defaults.
   
   # Now make some plots of the output:
   par(mfrow=c(2,2))

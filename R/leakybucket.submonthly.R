@@ -126,7 +126,7 @@ leakybucket.submonthly <- function(syear,eyear,phi,T,P,Mmax = 0.76,Mmin = 0.01,a
         # evapotranspiration:
         Etrans <- Epinc*sm0*rootd/(Mmax*rootd);
         # groundwater loss via percolation:
-        G <- mu_th*alphinc/(1+mu_th)*sm0*rootd;
+        G <- mu.th*alphinc/(1+mu.th)*sm0*rootd;
         # runoff; contributions from surface flow (1st term) and subsurface (2nd term)
         R <- Pinc*(sm0*rootd/(Mmax*rootd))^m.th + (alphinc/(1+mu.th))*sm0*rootd;
         dWdt <- Pinc - Etrans - R - G;
@@ -140,7 +140,7 @@ leakybucket.submonthly <- function(syear,eyear,phi,T,P,Mmax = 0.76,Mmin = 0.01,a
       # error-catching:
       if (M[t,cyear] <= Mmin){M[t,cyear] <- Mmin;}
       if (M[t,cyear] >= Mmax){M(t,cyear) <- Mmax;}
-      if (isnan(M[t,cyear])==1){M[t,cyear] <- Mmin;}
+      if (is.na(M[t,cyear])==1){M[t,cyear] <- Mmin;}
     
     } # end month (t) cycle
   } # end year cycle

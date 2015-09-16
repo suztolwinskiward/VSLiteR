@@ -1,6 +1,6 @@
 #' VS-Lite model of tree ring width growth.
 #' 
-#' \code{VSLiteR} simulates tree ring width growth.
+#' \code{VSLite} simulates tree ring width growth.
 #' 
 #' R port of VS-Lite Model of Tree Ring Width by Suz TOlwinski-Ward, 2015. For more references,
 #' see xxxxyyyyyzzzz.
@@ -11,7 +11,7 @@
 #' @param T (12 x Nyrs) Matrix of ordered mean monthly temperatures (in degEes C).
 #' @param P (12 x Nyrs) Matrix of ordered accumulated monthly precipitation (in mm).
 #' @param T1 Lower temperature threshold for growth to begin (scalar, deg. C).
-#' @param T1 Upper temperature threshold for growth sensitivity to temp (scalar, deg. C).
+#' @param T2 Upper temperature threshold for growth sensitivity to temp (scalar, deg. C).
 #' @param M1 Lower moisture threshold for growth to begin (scalar, v.v).
 #' @param M2 Upper moisture threshold for growth sensitivity to moisture (scalar, v/v).
 #' @param Mmax Scalar maximum soil moisture held by the soil (in v/v).
@@ -21,9 +21,9 @@
 #' @param mu.th Scalar runoff parameter 2 (unitless).
 #' @param rootd Scalar root/"bucket" depth (in mm).
 #' @param M0 Initial value for previous month's soil moisture at t = 1 (in v/v).
-#' @param subtep 
-#' @param I_0 
-#' @param I_f
+#' @param substep Use leaky bucket code with sub-monthly time-stepping? (TRUE/FALSE) 
+#' @param I_0 lower bound of integration window (months before January in NH)
+#' @param I_f upper bound of integration window (months after January in NH)
 #' @param hydroclim Switch; value is either "P" (default) or "M" depending on whether the 
 #' second input climate variable is precipitation, in which case soil moisture is estimated
 #' using the Leaky Bucket model of the CPC, or soil moisture, in which case the inputs are 
@@ -44,7 +44,7 @@
 ####################################################################################################
 
 
-VSLiteR <- function(syear,eyear,phi,T,P,
+VSLite <- function(syear,eyear,phi,T,P,
                         T1 = 8, T2 = 23, M1 = .01, M2 = .05,
                         Mmax = 0.76,Mmin = 0.01,alph = 0.093,
                         m.th = 4.886,mu.th = 5.8,rootd = 1000,M0 = .2,
@@ -60,7 +60,7 @@ VSLiteR <- function(syear,eyear,phi,T,P,
     M = P;
   }else{# Compute soil moisture:
     if(substep == 1){
-      M <- leakybucket_submonthly(syear,eyear,phi,T,P,
+      M <- leakybucket.submonthly(syear,eyear,phi,T,P,
                                   Mmax,Mmin,alph,m.th,mu.th,rootd,M0);
     }else{
       M <- leakybucket.monthly(syear,eyear,phi,T,P,

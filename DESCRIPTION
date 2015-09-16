@@ -6,8 +6,8 @@ Date: 2015-03-11
 Author: Suz Tolwinski-Ward
 Maintainer: Suz Tolwinski-Ward <suzski@gmail.com>
 Depends:
-    R (>= 3.0.2),
-    maps
+    R (>= 3.0.2)
+Imports: maps
 Description: This is an R port of the VS-Lite Model of Tree-Ring Width. The
     original reference for the model is: Tolwinski-Ward, S.E., M.N. Evans, M.K.
     Hughes, and K.J. Anchukaitis. 2011. An efficient forward model of the
@@ -17,5 +17,6 @@ Description: This is an R port of the VS-Lite Model of Tree-Ring Width. The
     World Data Center for Paleoclimatologyarchived in the Paleoclimatology
     software library with the original Matlab code.
     ftp://ftp.ncdc.noaa.gov/pub/data/paleo/softlib/vs-lite/readme-vslite.txt
+License: MIT + file LICENSE
 LazyData: true
 
