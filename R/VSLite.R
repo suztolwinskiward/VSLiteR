@@ -110,7 +110,7 @@ VSLite <- function(syear,eyear,phi,T,P,
     startmo <- 7+I_0; # (eg. I_0 = -4 in SH corresponds to starting integration in March of cyear)
     endmo <- I_f-6; # (eg. I_f = 12 in SH corresponds to ending integraion in June of next year)
     for (cyear in 1:(nyrs-1)){
-      width(cyear) <- sum(Gr[startmo:12,cyear]) + sum(Gr[1:endmo,cyear+1]);
+      width[cyear] <- sum(Gr[startmo:12,cyear]) + sum(Gr[1:endmo,cyear+1]);
     }
     # use average of growth data across modeled years to estimate last year's growth due
     # to the next year:
