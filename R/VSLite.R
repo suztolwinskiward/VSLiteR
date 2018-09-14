@@ -116,14 +116,15 @@ VSLite <- function(syear,eyear,phi,T,P,
     # to the next year:
     width[nyrs] <- sum(Gr[startmo:12,nyrs])+sum(rowMeans(Gr[1:endmo,]));
   }
-  
+
   # Simulated proxy series standardized width:
-  trw <- t((width-mean(width))/sd(width)); 
+  trw <- t((width-mean(width))/sd(width));
+  trw_org <- trw*sd(width)+mean(width);
 
   #############################################################################
   # Return output:
   out <- list(trw = trw, gT = gT, gM = gM, gE = gE, M = M, potEv = potEv,
-              sample.mean.width = mean(width), sample.std.width = sd(width))
+              sample.mean.width = mean(width), sample.std.width = sd(width), trw_org=trw_org)
   return(out)
 
 }
