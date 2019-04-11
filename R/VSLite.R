@@ -119,7 +119,7 @@ VSLite <- function(syear,eyear,phi,T,P,
 
   # Simulated proxy series standardized width:
   trw <- t((width-mean(width))/sd(width));
-  trw_org <- trw*sd(width)+mean(width);
+  trw_org <- width;
 
   #############################################################################
   # Return output:
